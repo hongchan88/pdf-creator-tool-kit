@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { HoverEffect } from '@components';
 import styles from './styles.module.scss';
 
-export default function Home() {
+export default function Proposal() {
   const projects = [
     {
       title: 'Stripe',
@@ -42,7 +42,7 @@ export default function Home() {
     },
   ];
   return (
-    <div className='z-0'>
+    <div className={styles.page}>
       <main className={styles.main}>
         <div className='max-w-5xl mx-auto px-8'>
           <HoverEffect items={projects} />
