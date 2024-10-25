@@ -1,5 +1,23 @@
-.main {
-  background-color: white;
-  width: 100%;
-  height: 100%;
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .bg-slate-50 {
+    background-color: #f8fafc !important;
+  }
+
+  .font-serif {
+    font-family: 'ITC Garamond Std Light Condensed', serif;
+  }
+
+  .text-6xl {
+    font-size: 3rem;
+  }
 }

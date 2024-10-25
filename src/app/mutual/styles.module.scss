@@ -1,0 +1,90 @@
+// FrontPage.scss
+
+.page {
+  background-color: #f8fafc;
+  margin: 3em auto;
+  height: 100%;
+  width: 100%;
+  max-width: 60em;
+  border: 1px solid #000;
+
+  @media print {
+    background-color: #f8fafc !important;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    max-width: none;
+    border: none;
+  }
+}
+
+.content {
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  width: 212px;
+  height: 21px;
+}
+
+.title {
+  font-family: 'ITC Garamond Std Light Condensed', serif;
+  font-size: 72px;
+  margin: 0 30% 0 40%;
+  line-height: 1em;
+  width: 100%;
+}
+
+.parties {
+  display: grid;
+  grid-template-rows: 2em 1fr;
+  margin-bottom: 5em;
+}
+
+.parties-header {
+  font-weight: bold;
+  grid-column: span 2;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.address {
+  text-transform: uppercase;
+
+  p {
+    margin: 0;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  // body {
+  //   -webkit-print-color-adjust: exact;
+  //   print-color-adjust: exact;
+  // }
+
+  .page {
+    zoom: 100%;
+  }
+
+  .content {
+    padding: 2cm;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+}
