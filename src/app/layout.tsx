@@ -20,9 +20,9 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
-      <body className={`bg-gray-900 h-full ${isDrawerOpen ? 'pl-64' : ''} `}>
+      <body className={`bg-gray-900 min-h-screen flex flex-col `}>
         <header
-          className={`fixed w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out ${
+          className={`fixed h-16 w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out ${
             isDrawerOpen ? ' ml-64' : ''
           }`}
         >
@@ -32,7 +32,7 @@ export default function RootLayout({
                 className='text-white font-bold text-xl cursor-pointer'
                 onClick={() => setIsDrawerOpen(!isDrawerOpen)}
               >
-                Higher
+                Craftify
               </div>
               <ul className='flex space-x-4'>
                 <li>
@@ -42,7 +42,7 @@ export default function RootLayout({
                 </li>
                 <li>
                   <a
-                    href='/proposal'
+                    href='/serviceContract'
                     className='text-white hover:text-gray-300'
                   >
                     Demo
@@ -62,7 +62,6 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
-        <SideDrawer />
         <main className={`pt-16`}>{children}</main>
       </body>
     </html>
