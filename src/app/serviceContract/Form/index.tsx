@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const Form: React.FC = () => {
-  const { setData, data } = useProposalStore();
+  const { setData, data, setAgreementCountry } = useProposalStore();
   const [isAUAgreement, setIsAUAgreement] = useState(true);
 
   return (
@@ -16,20 +16,24 @@ const Form: React.FC = () => {
       <div className='flex justify-center space-x-4 mb-8'>
         <Button
           variant={isAUAgreement ? 'default' : 'outline'}
-          onClick={() => setIsAUAgreement(true)}
+          onClick={() => setAgreementCountry('AU', true)}
           className={cn(
             'rounded-full',
-            isAUAgreement ? 'bg-blue-500 text-white' : 'bg-white text-black'
+            data.agreementCountry.AU
+              ? 'bg-blue-500 text-white'
+              : 'bg-white text-black'
           )}
         >
           AU AGREEMENT
         </Button>
         <Button
           variant={!isAUAgreement ? 'default' : 'outline'}
-          onClick={() => setIsAUAgreement(false)}
+          onClick={() => setAgreementCountry('US', true)}
           className={cn(
             'rounded-full',
-            !isAUAgreement ? 'bg-blue-500 text-white' : 'bg-white text-black'
+            data.agreementCountry.US
+              ? 'bg-blue-500 text-white'
+              : 'bg-white text-black'
           )}
         >
           US AGREEMENT
@@ -39,50 +43,46 @@ const Form: React.FC = () => {
       <div className='space-y-6'>
         <div>
           <label className='block text-sm font-medium text-gray-700 mb-1'>
-            COMPANY NAME (PAGE 2 & 10)
+            Creative Professional Name (PAGE 2 & 4)
           </label>
           <input
             type='text'
             className='w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-black placeholder:text-gray-500'
-            value={data.businessName}
-            onChange={(e) => setData('businessName', e.target.value)}
-            placeholder='Insert Company Name'
+            value={data.creativeProfessionalName}
+            onChange={(e) =>
+              setData('creativeProfessionalName', e.target.value)
+            }
+            placeholder='Creative Professional Name'
           />
         </div>
 
         <div>
           <label className='block text-sm font-medium text-gray-700 mb-1'>
-            TAX NUMBER (PAGE 2 & 10)
+            Business Name (PAGE 2 & 4)
           </label>
           <input
             type='text'
             className='w-full p-3 border border-gray-300 rounded-md bg-gray-100'
-            value={data.taxFileNumber}
+            value={data.clientBusinessName}
             onChange={(e) => {
-              const re = /^(?:[0-9]{1,11})?$/;
-              if (re.test(e.target.value)) {
-                setData('taxFileNumber', e.target.value);
-              }
+              setData('clientBusinessName', e.target.value);
             }}
-            placeholder='Insert Tax Number'
+            placeholder='Client Business Name'
           />
         </div>
 
         <div>
           <label className='block text-sm font-medium text-gray-700 mb-1'>
-            AGREEMENT PERIOD (PAGE 6)
+            Start Date (PAGE 2)
           </label>
           <input
             type='text'
             className='w-full p-3 border border-gray-300 rounded-md bg-gray-100'
-            value={data.agreementPeriod}
+            value={data.startDate}
             onChange={(e) => {
-              const re = /^(?:[0-9]{1,2})?$/;
-              if (re.test(e.target.value)) {
-                setData('agreementPeriod', e.target.value);
-              }
+              setData('startDate', e.target.value);
             }}
-            placeholder='36'
+            placeholder='30 OCT 2024'
           />
         </div>
       </div>

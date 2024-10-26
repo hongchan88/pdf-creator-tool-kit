@@ -2,15 +2,16 @@ import { create } from 'zustand';
 
 interface ProposalState {
   data: {
-    businessName: string;
-    taxFileNumber: string;
-    agreementPeriod: string;
+    creativeProfessionalName: string;
+    clientBusinessName: string;
+    startDate: string;
     agreementCountry: {
       AU: boolean;
       US: boolean;
     };
   };
   setData: (key: string, value: any) => void;
+  setAgreementCountry: (country: string, value: boolean) => void;
   exportPDF: () => void;
   isDrawerOpen: boolean;
   setIsDrawerOpen: (isOpen: boolean) => void;
@@ -18,9 +19,9 @@ interface ProposalState {
 
 export const useProposalStore = create<ProposalState>((set) => ({
   data: {
-    businessName: '',
-    taxFileNumber: '',
-    agreementPeriod: '',
+    creativeProfessionalName: '',
+    clientBusinessName: '',
+    startDate: '',
 
     agreementCountry: {
       AU: true,
@@ -29,6 +30,16 @@ export const useProposalStore = create<ProposalState>((set) => ({
   },
   isDrawerOpen: false,
   setIsDrawerOpen: (isOpen) => set({ isDrawerOpen: isOpen }),
+  setAgreementCountry: (country: string, value: boolean) =>
+    set((state) => ({
+      data: {
+        ...state.data,
+        agreementCountry: {
+          AU: country === 'AU' ? value : false,
+          US: country === 'US' ? value : false,
+        },
+      },
+    })),
   setData: (key, value) =>
     set((state) => ({
       data: { ...state.data, [key]: value },

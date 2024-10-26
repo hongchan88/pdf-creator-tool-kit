@@ -3,8 +3,16 @@ import PageLayout from '@/components/PageLayout';
 import useProposalStore from '@/stores/proposalStore';
 import React from 'react';
 import Form from './Form';
+import { start } from 'repl';
 
 const ServiceContract: React.FC = () => {
+  const {
+    creativeProfessionalName,
+    clientBusinessName,
+    startDate,
+
+    agreementCountry,
+  } = useProposalStore((state) => state.data);
   const termsAndConditions = [
     {
       title: 'TERMS AND CONDITIONS',
@@ -61,8 +69,9 @@ const ServiceContract: React.FC = () => {
         },
         {
           title: '11. GOVERNING LAW',
-          content:
-            'This Contract shall be governed by and construed in accordance with the laws of [Jurisdiction].',
+          content: `This Contract shall be governed by and construed in accordance with the laws of ${
+            agreementCountry.AU ? 'Australia' : 'United States'
+          }.`,
         },
         {
           title: '12. ENTIRE AGREEMENT',
@@ -124,11 +133,15 @@ const ServiceContract: React.FC = () => {
                   <tr>
                     <td className='py-2 pr-4 align-top font-bold'>ENTITIES</td>
                     <td className='py-2'>
-                      [Creative Professional] ("Service Provider")
+                      {creativeProfessionalName ||
+                        '[Insert Creative Professional Name]'}{' '}
+                      ("Service Provider")
                       <br />
                       AND
                       <br />
-                      [Business Name] ("Business")
+                      {clientBusinessName ||
+                        '[Insert Client Business Name]'}{' '}
+                      ("Business")
                     </td>
                   </tr>
                   <tr>
@@ -142,7 +155,9 @@ const ServiceContract: React.FC = () => {
                     <td className='py-2 pr-4 align-top font-bold'>
                       START DATE
                     </td>
-                    <td className='py-2'>15 Jan 2023</td>
+                    <td className='py-2'>
+                      {startDate || '[Insert Start Date]'}
+                    </td>
                   </tr>
                   <tr>
                     <td className='py-2 pr-4 align-top font-bold'>
@@ -215,13 +230,18 @@ const ServiceContract: React.FC = () => {
                 <div className='w-1/2 pr-8'>
                   <div className='border-b border-black h-12 mb-2'></div>
                   <p>Business</p>
-                  <p>[Business Name]</p>
+                  <p>
+                    {clientBusinessName || '[Insert Client Business Name]'}{' '}
+                  </p>
                   <p>Date: _________________</p>
                 </div>
                 <div className='w-1/2 pl-8'>
                   <div className='border-b border-black h-12 mb-2'></div>
                   <p>Service Provider</p>
-                  <p>[Creative Professional Name]</p>
+                  <p>
+                    {creativeProfessionalName ||
+                      '[Insert Creative Professional Name]'}{' '}
+                  </p>
                   <p>Date: _________________</p>
                 </div>
               </div>
