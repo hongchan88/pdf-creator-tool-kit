@@ -15,7 +15,7 @@ const Form: React.FC = () => {
 
       <div className='flex justify-center space-x-4 mb-8'>
         <Button
-          variant={isAUAgreement ? 'default' : 'outline'}
+          variant={data.agreementCountry.AU ? 'default' : 'outline'}
           onClick={() => setAgreementCountry('AU', true)}
           className={cn(
             'rounded-full',
@@ -27,7 +27,7 @@ const Form: React.FC = () => {
           AU AGREEMENT
         </Button>
         <Button
-          variant={!isAUAgreement ? 'default' : 'outline'}
+          variant={data.agreementCountry.US ? 'default' : 'outline'}
           onClick={() => setAgreementCountry('US', true)}
           className={cn(
             'rounded-full',
