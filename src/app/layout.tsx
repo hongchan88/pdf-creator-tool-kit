@@ -27,14 +27,9 @@ export default function RootLayout({
           <div className='container mx-auto px-4'>
             <nav className='flex items-center justify-between py-4'>
               <div className='text-white font-bold text-xl cursor-pointer'>
-                Craftify
+                <a href='/'>Craftify</a>
               </div>
               <ul className='flex space-x-4'>
-                <li>
-                  <a href='#' className='text-white hover:text-gray-300'>
-                    Home
-                  </a>
-                </li>
                 <li>
                   <a
                     href='/serviceContract'
