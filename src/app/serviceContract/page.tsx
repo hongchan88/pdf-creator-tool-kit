@@ -3,7 +3,7 @@ import PageLayout from '@/components/PageLayout';
 import useProposalStore from '@/stores/proposalStore';
 import React from 'react';
 import Form from './Form';
-import { start } from 'repl';
+import styles from './styles.module.scss';
 
 const ServiceContract: React.FC = () => {
   const {
@@ -42,6 +42,11 @@ const ServiceContract: React.FC = () => {
           content:
             'Both parties agree to keep confidential all information obtained from the other party during the course of this Contract, except as required by law or with the written consent of the other party.',
         },
+      ],
+    },
+    {
+      title: '',
+      sections: [
         {
           title: '6. TERMINATION',
           content:
@@ -99,10 +104,14 @@ const ServiceContract: React.FC = () => {
 
   return (
     <PageLayout Form={Form}>
-      <div className='mx-auto h-full w-full flex flex-col justify-between max-w-[210mm] shadow-lg text-black'>
-        <div className='overflow-auto'>
-          {/* Cover Page */}
-          <div className='p-16 min-h-[297mm] mb-16 page bg-white flex flex-col justify-between'>
+      <div
+        className={`mx-auto h-full w-full gap-16 flex flex-col justify-between max-w-[210mm] shadow-lg text-black  ${styles.pageContainer}  `}
+      >
+        {/* Cover Page */}
+        <div className={`block relative ${styles.pageBox}`}>
+          <div
+            className={`p-16 h-a4 w-a4 page bg-white flex flex-col justify-between ${styles.page}`}
+          >
             <div className='text-xl tracking-[0.2em] font-light'>Craftify</div>
             <div className='text-center'>
               <h1 className='text-5xl font-serif leading-tight mb-4'>
@@ -116,9 +125,13 @@ const ServiceContract: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Page 1 - Creative Services Contract */}
-          <div className='p-16 min-h-[297mm] mb-16 page bg-white flex flex-col justify-between'>
+        {/* Page 1 - Creative Services Contract */}
+        <div className={`block relative ${styles.pageBox}`}>
+          <div
+            className={`p-16 h-a4 w-a4 page bg-white flex flex-col justify-between ${styles.page}`}
+          >
             <div>
               <table className='w-full border-collapse'>
                 <thead>
@@ -189,12 +202,13 @@ const ServiceContract: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Pages 2-9: Terms and Conditions */}
-          {termsAndConditions.map((page, pageIndex) => (
+        {/* Pages 2-9: Terms and Conditions */}
+        {termsAndConditions.map((page, pageIndex) => (
+          <div key={pageIndex} className={`${styles.pageBox}`}>
             <div
-              key={pageIndex}
-              className='p-16 min-h-[297mm] mb-16 page bg-white flex flex-col justify-between'
+              className={`p-16 h-a4 w-a4 page bg-white flex flex-col justify-between ${styles.page}`}
             >
               <div>
                 <h2 className='text-2xl font-bold mb-6'>{page.title}</h2>
@@ -212,10 +226,14 @@ const ServiceContract: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
 
-          {/* Final Page */}
-          <div className='p-16 min-h-[297mm] mb-16 page bg-white flex flex-col justify-between'>
+        {/* Final Page */}
+        <div className={`block relative ${styles.pageBox}`}>
+          <div
+            className={`p-16 h-a4 w-a4 page bg-white flex flex-col justify-between ${styles.page}`}
+          >
             <div>
               <h2 className='text-2xl font-bold mb-6'>EXECUTION</h2>
               <p className='mb-4'>
@@ -249,7 +267,7 @@ const ServiceContract: React.FC = () => {
             <div className='flex justify-between items-end text-sm mt-8'>
               <div className='font-semibold'>PRIVATE</div>
               <div className='border border-black px-3 py-1 rounded'>
-                PAGE 4 OF 4
+                PAGE 5 OF 4
               </div>
             </div>
           </div>

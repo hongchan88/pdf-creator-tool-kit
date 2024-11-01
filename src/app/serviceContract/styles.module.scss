@@ -1,23 +1,24 @@
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
+.pageContainer {
+  width: 100%;
+  height: 100%;
+  @media print {
+    gap: 0;
   }
+  .pageBox {
+    position: relative;
 
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .bg-slate-50 {
-    background-color: #f8fafc !important;
-  }
-
-  .font-serif {
-    font-family: 'ITC Garamond Std Light Condensed', serif;
-  }
-
-  .text-6xl {
-    font-size: 3rem;
+    @media print {
+      width: 210mm; /* A4 width */
+      height: 297mm; /* A4 height */
+      display: flex; /* Changed from absolute to flex */
+      flex-direction: column; /* If you want a vertical layout */
+      align-items: center; /* Center align content horizontally */
+      justify-content: center; /* Center align content vertically */
+    }
+    .page {
+      @media print {
+        padding: 40px;
+      }
+    }
   }
 }

@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useProposalStore } from '../../../stores/proposalStore';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useReactToPrint } from 'react-to-print';
+import styles from './styles.module.scss';
 
 const Form: React.FC = () => {
-  const { setData, data, setAgreementCountry } = useProposalStore();
-  const [isAUAgreement, setIsAUAgreement] = useState(true);
+  const { setData, data, setAgreementCountry, contentRef } = useProposalStore();
+
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const reactToPrintFn = useReactToPrint({ contentRef });
+
+  useEffect(() => {
+    if (contentRef?.current) {
+      setIsPageLoaded(true);
+    }
+  }, [contentRef?.current]);
 
   return (
     <div className='space-y-6 max-w-md mx-auto p-4'>
@@ -86,6 +96,15 @@ const Form: React.FC = () => {
           />
         </div>
       </div>
+      <button
+        onClick={() => reactToPrintFn()}
+        disabled={!isPageLoaded}
+        className={` w-full bg-blue-500 text-white px-4 py-2 rounded ${
+          !isPageLoaded ? 'opacity-50 cursor-not-allowed' : ''
+        } ${styles.printBtn}`}
+      >
+        Export to PDF
+      </button>
     </div>
   );
 };

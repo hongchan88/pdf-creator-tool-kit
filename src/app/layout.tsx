@@ -20,11 +20,11 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
-      <body className={`bg-gray-900 min-h-screen flex flex-col `}>
+      <body className={`bg-gray-900 min-h-screen flex flex-col w-full  `}>
         <header
           className={`fixed h-16 w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out ${
             isDrawerOpen ? ' ml-64' : ''
-          }`}
+          } print:hidden  `}
         >
           <div className='container mx-auto px-4'>
             <nav className='flex items-center justify-between py-4'>
@@ -62,7 +62,7 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
-        <main className={`pt-16`}>{children}</main>
+        <main className={`pt-16 print:pt-0`}>{children}</main>
       </body>
     </html>
   );
