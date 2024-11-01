@@ -1,6 +1,6 @@
 'use client';
 import PageLayout from '@/components/PageLayout';
-import useProposalStore from '@/stores/proposalStore';
+import useDataStore from '@/stores/dataStore';
 import React from 'react';
 import Form from './Form';
 import styles from './styles.module.scss';
@@ -12,7 +12,7 @@ const ServiceContract: React.FC = () => {
     startDate,
 
     agreementCountry,
-  } = useProposalStore((state) => state.data);
+  } = useDataStore((state) => state.data);
   const termsAndConditions = [
     {
       title: 'TERMS AND CONDITIONS',
@@ -121,7 +121,7 @@ const ServiceContract: React.FC = () => {
             <div className='flex justify-between items-end text-sm'>
               <div className='font-semibold'>PRIVATE</div>
               <div className='border border-black px-3 py-1 rounded'>
-                PAGE 1 OF 4
+                PAGE 1 OF 5
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ const ServiceContract: React.FC = () => {
             <div className='flex justify-between items-end text-sm mt-8'>
               <div className='font-semibold'>PRIVATE</div>
               <div className='border border-black px-3 py-1 rounded'>
-                PAGE 2 OF 4
+                PAGE 2 OF 5
               </div>
             </div>
           </div>
@@ -222,7 +222,7 @@ const ServiceContract: React.FC = () => {
               <div className='flex justify-between items-end text-sm mt-8'>
                 <div className='font-semibold'>PRIVATE</div>
                 <div className='border border-black px-3 py-1 rounded'>
-                  PAGE {pageIndex + 3} OF 4
+                  PAGE {pageIndex + 3} OF 5
                 </div>
               </div>
             </div>
@@ -267,7 +267,7 @@ const ServiceContract: React.FC = () => {
             <div className='flex justify-between items-end text-sm mt-8'>
               <div className='font-semibold'>PRIVATE</div>
               <div className='border border-black px-3 py-1 rounded'>
-                PAGE 5 OF 4
+                PAGE 5 OF 5
               </div>
             </div>
           </div>

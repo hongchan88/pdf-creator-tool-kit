@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import styles from './styles.module.scss';
 import { useReactToPrint } from 'react-to-print';
-import { useProposalStore } from '../../stores/proposalStore';
+import { useDataStore } from '../../stores/dataStore';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface PageLayoutProps {
 
 const PageLayout: React.FC<PageLayoutProps> = ({ Form, children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const proposalStore = useProposalStore();
+  const proposalStore = useDataStore();
 
   const contentRef = useRef<HTMLDivElement>(null);
 

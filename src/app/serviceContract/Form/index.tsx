@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useProposalStore } from '../../../stores/proposalStore';
+import { useDataStore } from '../../../stores/dataStore';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useReactToPrint } from 'react-to-print';
 import styles from './styles.module.scss';
 
 const Form: React.FC = () => {
-  const { setData, data, setAgreementCountry, contentRef } = useProposalStore();
+  const { setData, data, setAgreementCountry, contentRef } = useDataStore();
 
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const reactToPrintFn = useReactToPrint({ contentRef });
@@ -96,7 +96,7 @@ const Form: React.FC = () => {
           />
         </div>
       </div>
-      <button
+      <Button
         onClick={() => reactToPrintFn()}
         disabled={!isPageLoaded}
         className={` w-full bg-blue-500 text-white px-4 py-2 rounded ${
@@ -104,7 +104,7 @@ const Form: React.FC = () => {
         } ${styles.printBtn}`}
       >
         Export to PDF
-      </button>
+      </Button>
     </div>
   );
 };

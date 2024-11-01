@@ -1,6 +1,6 @@
 'use client';
 
-import { useProposalStore } from '@/stores/proposalStore';
+import { useDataStore } from '@/stores/dataStore';
 import './globals.css';
 // import type { Metadata } from 'next'
 import { SideDrawer } from '@components';
@@ -15,23 +15,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isDrawerOpen = useProposalStore((state) => state.isDrawerOpen);
-  const setIsDrawerOpen = useProposalStore((state) => state.setIsDrawerOpen);
+  const isDrawerOpen = useDataStore((state) => state.isDrawerOpen);
+  const setIsDrawerOpen = useDataStore((state) => state.setIsDrawerOpen);
 
   return (
     <html lang='en'>
       <body className={`bg-gray-900 min-h-screen flex flex-col w-full  `}>
         <header
-          className={`fixed h-16 w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out ${
-            isDrawerOpen ? ' ml-64' : ''
-          } print:hidden  `}
+          className={`fixed h-16 w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out`}
         >
           <div className='container mx-auto px-4'>
             <nav className='flex items-center justify-between py-4'>
-              <div
-                className='text-white font-bold text-xl cursor-pointer'
-                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              >
+              <div className='text-white font-bold text-xl cursor-pointer'>
                 Craftify
               </div>
               <ul className='flex space-x-4'>

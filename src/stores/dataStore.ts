@@ -20,7 +20,7 @@ interface ProposalState {
   contentRef: RefObject<Element | Text> | undefined;
 }
 
-export const useProposalStore = create<ProposalState>((set) => ({
+export const useDataStore = create<ProposalState>((set) => ({
   data: {
     creativeProfessionalName: '',
     clientBusinessName: '',
@@ -56,4 +56,4 @@ export const useProposalStore = create<ProposalState>((set) => ({
   setContentRef: (ref) => set({ contentRef: ref }),
 }));
 
-export default useProposalStore;
+export default useDataStore;
