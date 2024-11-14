@@ -20,7 +20,9 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
-      <body className={`bg-gray-900 min-h-screen flex flex-col w-full  `}>
+      <body
+        className={`bg-themeBackground min-h-screen flex flex-col w-full  `}
+      >
         <header
           className={`fixed h-16 w-3/4 rounded-2xl mx-auto top-0 left-0 right-0 z-50 bg-gray-800 bg-opacity-80 backdrop-blur-md transition-all duration-300 ease-in-out`}
         >

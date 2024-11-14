@@ -23,6 +23,10 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        themeBackground: 'rgb(17 24 39)',
+        themeLightBackground: '#F6F5F2',
+        themeLightHeaderBg: '#000B58',
+        themelightText: 'black',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

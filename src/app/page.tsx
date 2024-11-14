@@ -43,7 +43,7 @@ export default function Home() {
   ];
 
   return (
-    <div className='bg-gray-900 text-white min-h-screen'>
+    <div className='bg-themeBackground text-white min-h-screen'>
       <main>
         <section className='text-center py-12 sm:py-20'>
           <h1 className='text-4xl sm:text-6xl font-bold mb-4'>
