@@ -1,26 +1,33 @@
+'use client';
 import Image from 'next/image';
 import styles from './styles.module.scss';
+import { FlipWords } from '@/components/ui/flip-words';
 
 export default function Home() {
   const features = [
     {
-      title: 'Open Source',
-      description: 'The power of OSS',
+      title: 'Stage 1: Upload Your PDF',
+      description:
+        'Easily upload your existing PDF to get started. Whether it’s a proposal, report, or contract, Craftify supports all your business document needs.',
       color: 'bg-purple-800',
     },
     {
-      title: 'Blazingly fast',
-      description: 'Document at the speed of thought',
+      title: 'Stage 2: Provide Customization Details',
+      description:
+        "Give us all the details of the text you’d like to customize, such as company names, length of contract period, logos, certifications, or other specific elements. We'll build your tailored PDF on our platform, and it will be ready for you on your account in a few days.",
       color: 'bg-green-800',
     },
+
     {
-      title: 'Organized',
-      description: 'Everything, in one place, as it should be',
+      title: 'Stage 3: Tailor for Your Clients',
+      description:
+        'Once your document is set up, Craftify enables you to quickly personalize each PDF for individual clients. Let your sales team take over, effortlessly creating customized documents on demand.',
       color: 'bg-orange-800',
     },
     {
-      title: 'Free Forever*',
-      description: '* maybe for like, $3',
+      title: 'Stage 4: Export & Use Instantly',
+      description:
+        'Once the customization is complete, instantly export your tailored PDF. Save time and boost efficiency by generating professional documents in seconds.',
       color: 'bg-red-800',
     },
   ];
@@ -30,39 +37,42 @@ export default function Home() {
       name: 'Tina',
       title: 'Masters in Teaching',
       content:
-        "Love it, been using it for university and it's a life saver. I really like how the annotations for the PDF's are stacked next to each other. It saves so much time!",
+        'Craftify has completely transformed how our sales team operates. We used to spend hours manually customizing PDFs for each client. Now, with Craftify, the process is seamless and efficient. Uploading, customizing, and exporting documents is a breeze, and the platform is incredibly user-friendly. Our team can now focus more on building relationships with clients rather than getting bogged down with admin tasks. It’s a game-changer for our workflow!',
       avatar: '/path/to/tina-avatar.png',
     },
     {
       name: 'Kevin',
       title: 'Bachelor in Physiotherapy',
       content:
-        "It's not Microsoft Word, but slowly the features are getting there! I like how it's all free and kinda works???",
+        'As a small business owner, I struggled to create professional-looking proposals that could be tailored for different clients. Craftify made it so easy! I uploaded my existing PDFs, provided the customization details, and within days, I had a ready-to-use system. Now, I can generate personalized, high-quality documents in seconds. It’s saved me so much time and helped me leave a great impression with my clients!',
       avatar: '/path/to/kevin-avatar.png',
     },
   ];
+  const words = [
+    'Easy Customization',
+    'Empower Your Sales Team',
+    'Easy Customization',
+  ];
 
   return (
-    <div className='bg-themeBackground text-white min-h-screen'>
+    <div className=' bg-transparent text-white min-h-screen'>
       <main>
         <section className='text-center py-12 sm:py-20'>
           <h1 className='text-4xl sm:text-6xl font-bold mb-4'>
-            Read.
-            <br />
-            Think.
-            <br />
-            Write.
+            <FlipWords words={words} /> <br />
           </h1>
           <p className='text-lg sm:text-xl mb-8'>
-            Higher helps you make progress on that research
+            Take control of your PDF creation process—upload, customize, and
+            export with ease.
             <br className='hidden sm:inline' />
-            when you don't want to.
+            Let your team focus on what they do best, while you handle the
+            customization seamlessly.
           </p>
           <div className='container mx-auto px-4'>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
               {features.map((feature, index) => (
                 <div key={index} className={`${feature.color} p-4 rounded-lg`}>
-                  <h3 className='font-bold'>{feature.title}</h3>
+                  <h3 className='font-bold h-16'>{feature.title}</h3>
                   <p className='text-sm'>{feature.description}</p>
                 </div>
               ))}
@@ -70,7 +80,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className='py-12 sm:py-20'>
+        {/* <section className='py-12 sm:py-20'>
           <h2 className='text-3xl sm:text-4xl font-bold mb-8 text-center'>
             Testimonies
           </h2>
@@ -98,7 +108,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <footer className='text-center py-4 text-sm text-gray-500'>
