@@ -68,7 +68,7 @@ export default function RootLayout({
                         onClick={() => {
                           router.push('/serviceContract');
                         }}
-                        className='text-white cursor-pointer hover:text-gray-300 '
+                        className='text-white font-bold text-xl  cursor-pointer hover:text-gray-300 '
                       >
                         Demo
                       </a>

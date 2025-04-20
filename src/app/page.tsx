@@ -71,8 +71,11 @@ export default function Home() {
           <div className='container mx-auto px-4'>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
               {features.map((feature, index) => (
-                <div key={index} className={`${feature.color} p-4 rounded-lg`}>
-                  <h3 className='font-bold h-16'>{feature.title}</h3>
+                <div
+                  key={index}
+                  className={`${feature.color} p-4 rounded-lg flex flex-col gap-10`}
+                >
+                  <h3 className='font-bold text-3xl h-16'>{feature.title}</h3>
                   <p className='text-sm'>{feature.description}</p>
                 </div>
               ))}
