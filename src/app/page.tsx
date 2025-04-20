@@ -68,7 +68,7 @@ export default function Home() {
             Let your team focus on what they do best, while you handle the
             customization seamlessly.
           </p>
-          <div className='container mx-auto px-4'>
+          <div className='container mx-auto px-4 mt-32 '>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
               {features.map((feature, index) => (
                 <div
