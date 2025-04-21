@@ -4,9 +4,7 @@ import { useDataStore } from '@/stores/dataStore';
 import React from 'react';
 // import { useProposalStore } from '../../stores/proposalStore';
 
-interface SideDrawerProps {}
-
-export const SideDrawer: React.FC<SideDrawerProps> = () => {
+export const SideDrawer: React.FC = () => {
   const exportPDF = useDataStore((state) => state.exportPDF);
   const isDrawerOpen = useDataStore((state) => state.isDrawerOpen);
   const setIsDrawerOpen = useDataStore((state) => state.setIsDrawerOpen);

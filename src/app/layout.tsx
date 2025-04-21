@@ -1,13 +1,10 @@
 'use client';
-
-import { useDataStore } from '@/stores/dataStore';
 import './globals.css';
 // import type { Metadata } from 'next'
-import { SideDrawer } from '@components';
 import { motion } from 'framer-motion';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 // export const metadata: Metadata = {
 //   title: 'Higher',
@@ -19,12 +16,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isDrawerOpen = useDataStore((state) => state.isDrawerOpen);
-  const setIsDrawerOpen = useDataStore((state) => state.setIsDrawerOpen);
-  console.log(children, 'tt');
   const currentPath = usePathname(); // Use usePathname to get the current path
   const router = useRouter();
-  const [isSmaller, setIsSmaller] = useState(false);
   useEffect(() => {
     console.log('Current page:', currentPath); // Log the current page
   }, [currentPath]);

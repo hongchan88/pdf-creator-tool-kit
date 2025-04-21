@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { MutableRefObject, RefObject } from 'react';
+import { RefObject } from 'react';
 
 interface ProposalState {
   data: {
@@ -11,7 +11,7 @@ interface ProposalState {
       US: boolean;
     };
   };
-  setData: (key: string, value: any) => void;
+  setData: (key: string, value: string) => void;
   setAgreementCountry: (country: string, value: boolean) => void;
   exportPDF: () => void;
   isDrawerOpen: boolean;

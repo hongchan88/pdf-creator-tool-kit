@@ -148,13 +148,13 @@ const ServiceContract: React.FC = () => {
                     <td className='py-2'>
                       {creativeProfessionalName ||
                         '[Insert Creative Professional Name]'}{' '}
-                      ("Service Provider")
+                      (&quot;Service Provider&quot;)
                       <br />
                       AND
                       <br />
                       {clientBusinessName ||
                         '[Insert Client Business Name]'}{' '}
-                      ("Business")
+                      (&quot;Business&quot;)
                     </td>
                   </tr>
                   <tr>

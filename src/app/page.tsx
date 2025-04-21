@@ -1,6 +1,4 @@
 'use client';
-import Image from 'next/image';
-import styles from './styles.module.scss';
 import { FlipWords } from '@/components/ui/flip-words';
 
 export default function Home() {
@@ -32,22 +30,22 @@ export default function Home() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: 'Tina',
-      title: 'Masters in Teaching',
-      content:
-        'Craftify has completely transformed how our sales team operates. We used to spend hours manually customizing PDFs for each client. Now, with Craftify, the process is seamless and efficient. Uploading, customizing, and exporting documents is a breeze, and the platform is incredibly user-friendly. Our team can now focus more on building relationships with clients rather than getting bogged down with admin tasks. It’s a game-changer for our workflow!',
-      avatar: '/path/to/tina-avatar.png',
-    },
-    {
-      name: 'Kevin',
-      title: 'Bachelor in Physiotherapy',
-      content:
-        'As a small business owner, I struggled to create professional-looking proposals that could be tailored for different clients. Craftify made it so easy! I uploaded my existing PDFs, provided the customization details, and within days, I had a ready-to-use system. Now, I can generate personalized, high-quality documents in seconds. It’s saved me so much time and helped me leave a great impression with my clients!',
-      avatar: '/path/to/kevin-avatar.png',
-    },
-  ];
+  // const testimonials = [
+  //   {
+  //     name: 'Tina',
+  //     title: 'Masters in Teaching',
+  //     content:
+  //       'Craftify has completely transformed how our sales team operates. We used to spend hours manually customizing PDFs for each client. Now, with Craftify, the process is seamless and efficient. Uploading, customizing, and exporting documents is a breeze, and the platform is incredibly user-friendly. Our team can now focus more on building relationships with clients rather than getting bogged down with admin tasks. It’s a game-changer for our workflow!',
+  //     avatar: '/path/to/tina-avatar.png',
+  //   },
+  //   {
+  //     name: 'Kevin',
+  //     title: 'Bachelor in Physiotherapy',
+  //     content:
+  //       'As a small business owner, I struggled to create professional-looking proposals that could be tailored for different clients. Craftify made it so easy! I uploaded my existing PDFs, provided the customization details, and within days, I had a ready-to-use system. Now, I can generate personalized, high-quality documents in seconds. It’s saved me so much time and helped me leave a great impression with my clients!',
+  //     avatar: '/path/to/kevin-avatar.png',
+  //   },
+  // ];
   const words = [
     'Easy Customization',
     'Empower Your Sales Team',
