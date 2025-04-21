@@ -4,26 +4,26 @@ import { FlipWords } from '@/components/ui/flip-words';
 export default function Home() {
   const features = [
     {
-      title: 'Stage 1: Upload Your PDF',
+      title: '1. Upload Your PDF',
       description:
         'Easily upload your existing PDF to get started. Whether it’s a proposal, report, or contract, Craftify supports all your business document needs.',
       color: 'bg-purple-800',
     },
     {
-      title: 'Stage 2: Provide Customization Details',
+      title: '2. Provide Customization Details',
       description:
         "Give us all the details of the text you’d like to customize, such as company names, length of contract period, logos, certifications, or other specific elements. We'll build your tailored PDF on our platform, and it will be ready for you on your account in a few days.",
       color: 'bg-green-800',
     },
 
     {
-      title: 'Stage 3: Tailor for Your Clients',
+      title: '3. Tailor for Your Clients',
       description:
         'Once your document is set up, Craftify enables you to quickly personalize each PDF for individual clients. Let your sales team take over, effortlessly creating customized documents on demand.',
       color: 'bg-orange-800',
     },
     {
-      title: 'Stage 4: Export & Use Instantly',
+      title: '4. Export & Use Instantly',
       description:
         'Once the customization is complete, instantly export your tailored PDF. Save time and boost efficiency by generating professional documents in seconds.',
       color: 'bg-red-800',
@@ -71,10 +71,10 @@ export default function Home() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`${feature.color} p-4 rounded-lg flex flex-col gap-10`}
+                  className={`${feature.color} rounded-lg flex flex-col gap-20 p-10`}
                 >
                   <h3 className='font-bold text-3xl h-16'>{feature.title}</h3>
-                  <p className='text-sm'>{feature.description}</p>
+                  <p className='text-lg'>{feature.description}</p>
                 </div>
               ))}
             </div>
