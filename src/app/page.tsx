@@ -1,5 +1,6 @@
 'use client';
 import { FlipWords } from '@/components/ui/flip-words';
+import Head from 'next/head';
 //test
 export default function Home() {
   const features = [
@@ -53,35 +54,39 @@ export default function Home() {
   ];
 
   return (
-    <div className=' bg-transparent text-white min-h-screen'>
-      <main>
-        <section className='text-center py-12 sm:py-20'>
-          <h1 className='text-4xl sm:text-6xl font-bold mb-4'>
-            <FlipWords words={words} /> <br />
-          </h1>
-          <p className='text-lg sm:text-xl mb-8'>
-            Take control of your PDF creation process—upload, customize, and
-            export with ease.
-            <br className='hidden sm:inline' />
-            Let your team focus on what they do best, while you handle the
-            customization seamlessly.
-          </p>
-          <div className='container mx-auto px-4 mt-32 '>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`${feature.color} rounded-lg flex flex-col gap-20 p-10`}
-                >
-                  <h3 className='font-bold text-3xl h-16'>{feature.title}</h3>
-                  <p className='text-lg'>{feature.description}</p>
-                </div>
-              ))}
+    <>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
+      <div className=' bg-transparent text-white min-h-screen'>
+        <main>
+          <section className='text-center py-12 sm:py-20'>
+            <h1 className='text-4xl sm:text-6xl font-bold mb-4'>
+              <FlipWords words={words} /> <br />
+            </h1>
+            <p className='text-lg sm:text-xl mb-8'>
+              Take control of your PDF creation process—upload, customize, and
+              export with ease.
+              <br className='hidden sm:inline' />
+              Let your team focus on what they do best, while you handle the
+              customization seamlessly.
+            </p>
+            <div className='container mx-auto px-4 mt-32 '>
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className={`${feature.color} rounded-lg flex flex-col gap-20 p-10`}
+                  >
+                    <h3 className='font-bold text-3xl h-16'>{feature.title}</h3>
+                    <p className='text-lg'>{feature.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* <section className='py-12 sm:py-20'>
+          {/* <section className='py-12 sm:py-20'>
           <h2 className='text-3xl sm:text-4xl font-bold mb-8 text-center'>
             Testimonies
           </h2>
@@ -110,11 +115,12 @@ export default function Home() {
             </div>
           </div>
         </section> */}
-      </main>
+        </main>
 
-      <footer className='text-center py-4 text-sm text-gray-500'>
-        Made with ❤️ by Hong
-      </footer>
-    </div>
+        <footer className='text-center py-4 text-sm text-gray-500'>
+          Made with ❤️ by Hong
+        </footer>
+      </div>
+    </>
   );
 }
