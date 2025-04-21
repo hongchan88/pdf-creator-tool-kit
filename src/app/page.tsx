@@ -76,10 +76,12 @@ export default function Home() {
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className={`${feature.color} rounded-lg flex flex-col gap-20 p-10`}
+                    className={`${feature.color} rounded-lg flex flex-col gap-20 p-5`}
                   >
-                    <h3 className='font-bold text-3xl h-16'>{feature.title}</h3>
-                    <p className='text-lg'>{feature.description}</p>
+                    <h3 className='font-bold text-3xl  h-16'>
+                      {feature.title}
+                    </h3>
+                    <p className='text-base'>{feature.description}</p>
                   </div>
                 ))}
               </div>
