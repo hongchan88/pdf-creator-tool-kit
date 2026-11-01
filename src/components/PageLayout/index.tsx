@@ -1,55 +1,54 @@
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import { useDataStore } from '../../stores/dataStore';
-import {
-  DoubleArrowLeftIcon,
-  DoubleArrowRightIcon,
-} from '@radix-ui/react-icons';
+
 interface PageLayoutProps {
   children: React.ReactNode;
   Form: React.ComponentType;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({ Form, children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const proposalStore = useDataStore();
-
+  const [view, setView] = useState<'edit' | 'preview'>('edit');
+  const setContentRef = useDataStore((state) => state.setContentRef);
   const contentRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [preview, setPreview] = useState({ scale: 1, height: 5900 });
 
   useEffect(() => {
-    proposalStore.setContentRef(
-      contentRef as RefObject<Element | Text> | undefined
-    );
+    setContentRef(contentRef);
+    return () => setContentRef(undefined);
+  }, [setContentRef]);
+
+  useEffect(() => {
+    const updatePreview = () => {
+      const width = viewportRef.current?.clientWidth;
+      const height = contentRef.current?.scrollHeight;
+      if (width && height) setPreview({ scale: Math.min(1, width / 794), height });
+    };
+    const observer = new ResizeObserver(updatePreview);
+    if (viewportRef.current) observer.observe(viewportRef.current);
+    if (contentRef.current) observer.observe(contentRef.current);
+    updatePreview();
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className='flex w-full min-h-screen'>
-      <div
-        className={`bg-gray-100 rounded-r-md fixed h-screen transition-all duration-300 ease-in-out ${
-          isSidebarOpen ? 'w-74' : 'w-13'
-        } ${styles.form}`}
-      >
-        <div className='flex justify-end p-3'>
-          {isSidebarOpen ? (
-            <DoubleArrowLeftIcon
-              onClick={() => setIsSidebarOpen((prev) => !prev)}
-              className='w-7 h-7 cursor-pointer'
-            />
-          ) : (
-            <DoubleArrowRightIcon
-              onClick={() => setIsSidebarOpen((prev) => !prev)}
-              className='w-7 h-7 cursor-pointer'
-            />
-          )}
+    <div className={styles.workspace}>
+      <div className={styles.tabs} role='group' aria-label='Document view'>
+        <button type='button' aria-pressed={view === 'edit'} onClick={() => setView('edit')}>Edit details</button>
+        <button type='button' aria-pressed={view === 'preview'} onClick={() => setView('preview')}>Preview document</button>
+      </div>
+      <aside aria-label='Document details' className={`${styles.form} ${view !== 'edit' ? styles.mobileHidden : ''}`}>
+        <Form />
+      </aside>
+      <section aria-label='Document preview' tabIndex={0} className={`${styles.preview} ${view !== 'preview' ? styles.mobileHidden : ''}`}>
+        <p className={styles.previewHint}>Preview fits your screen. PDF export uses full-size pages.</p>
+        <div ref={viewportRef} className={styles.viewport}>
+          <div className={styles.frame} style={{ '--preview-scale': preview.scale, '--document-height': `${preview.height}px` } as React.CSSProperties}>
+            <div ref={contentRef} className={styles.page}>{children}</div>
+          </div>
         </div>
-        {isSidebarOpen ? <Form /> : null}
-      </div>
-      <div
-        ref={contentRef}
-        className={` ${styles.page} ${!isSidebarOpen ? styles.minimize : ''} `}
-      >
-        {children}
-      </div>
+      </section>
     </div>
   );
 };

@@ -1,105 +1,24 @@
-'use client';
 import './globals.css';
-// import type { Metadata } from 'next'
-import { motion } from 'framer-motion';
-import { AuroraBackground } from '@/components/ui/aurora-background';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-// export const metadata: Metadata = {
-//   title: 'Higher',
-//   description: 'Read. Think. Write.',
-// }
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const currentPath = usePathname(); // Use usePathname to get the current path
-  const router = useRouter();
-  useEffect(() => {
-    console.log('Current page:', currentPath); // Log the current page
-  }, [currentPath]);
+export const metadata: Metadata = {
+  title: 'Craftify | Document workspace',
+  description: 'Customize a creative services contract, preview your document and save it as PDF using your browser.',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={`bg-themeBackground   `}>
-        <AuroraBackground>
-          <div className='relative min-h-screen flex flex-col w-full'>
-            <motion.div
-              className={`fixed h-16  ${
-                currentPath == '/serviceContract'
-                  ? 'left-0 top-0 w-[448px]'
-                  : 'mx-auto top-8 left-0 right-0 w-[60%]'
-              }  rounded-2xl z-50 bg-white bg-opacity-30 backdrop-blur-md transition-all duration-300 ease-in-out`}
-              initial={{}} // Start with 100% width
-              animate={{}} // Change width on trigger
-              transition={{ delay: 0.2 }}
-            >
-              <div className='container mx-auto px-4'>
-                <nav className='flex items-center justify-between py-4'>
-                  <div className='text-white font-bold text-xl cursor-pointer'>
-                    <a
-                      onClick={() => {
-                        router.push('/');
-                      }}
-                    >
-                      Craftify
-                    </a>
-                    <div className='flex justify-center'>
-                      {currentPath == '/' && (
-                        <motion.div
-                          className='w-2 h-2 bg-gray-900 rounded-2xl'
-                          layoutId='circle'
-                        />
-                      )}
-                    </div>
-                  </div>
-                  <ul className='flex space-x-4'>
-                    <li>
-                      <a
-                        onClick={() => {
-                          router.push('/serviceContract');
-                        }}
-                        className='text-white font-bold text-xl  cursor-pointer hover:text-gray-300 '
-                      >
-                        Demo
-                      </a>
-                      <div className='flex justify-center'>
-                        {currentPath == '/serviceContract' && (
-                          <motion.div
-                            className='w-2 h-2 bg-gray-900 rounded-2xl self-center'
-                            layoutId='circle'
-                          />
-                        )}
-                      </div>
-                    </li>
-                    {/* <li>
-                      <a
-                        onClick={() => {
-                          router.push('/login');
-                        }}
-                        className='text-white hover:text-gray-300'
-                      >
-                        Login
-                      </a>
-                      <div className='flex justify-center'>
-                        {currentPath == '/login' && (
-                          <motion.div
-                            className='w-2 h-2 bg-gray-900  rounded-2xl'
-                            layoutId='circle'
-                          />
-                        )}
-                      </div>
-                    </li> */}
-                  </ul>
-                </nav>
-              </div>
-            </motion.div>
-
-            <main className={`pt-16 print:pt-0`}>{children}</main>
-          </div>
-        </AuroraBackground>
+      <body className='bg-slate-900'>
+        <a href='#main-content' className='sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-50 focus:bg-white focus:p-3'>Skip to content</a>
+        <header className='sticky top-0 z-30 h-16 border-b border-slate-700 bg-slate-900 text-white'>
+          <nav aria-label='Main navigation' className='flex h-full items-center justify-between px-4 sm:px-8'>
+            <Link href='/' className='font-bold text-xl'>Craftify</Link>
+            <Link href='/serviceContract' className='rounded border border-slate-500 px-4 py-2 hover:bg-slate-800'>Open document editor</Link>
+          </nav>
+        </header>
+        <main id='main-content'>{children}</main>
       </body>
     </html>
   );

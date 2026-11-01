@@ -9,7 +9,9 @@
 
     @media print {
       width: 210mm; /* A4 width */
-      height: 297mm; /* A4 height */
+      min-height: 297mm; /* A4 height */
+      break-after: page;
+      &:last-child { break-after: auto; }
       display: flex; /* Changed from absolute to flex */
       flex-direction: column; /* If you want a vertical layout */
       align-items: center; /* Center align content horizontally */
@@ -18,6 +20,9 @@
     .page {
       @media print {
         padding: 40px;
+        height: auto;
+        min-height: 297mm;
+        overflow-wrap: anywhere;
       }
     }
   }

@@ -11,8 +11,8 @@ interface ProposalState {
       US: boolean;
     };
   };
-  setData: (key: string, value: string) => void;
-  setAgreementCountry: (country: string, value: boolean) => void;
+  setData: (key: 'creativeProfessionalName' | 'clientBusinessName' | 'startDate', value: string) => void;
+  setAgreementCountry: (country: 'AU' | 'US', value: boolean) => void;
   exportPDF: () => void;
   isDrawerOpen: boolean;
   setIsDrawerOpen: (isOpen: boolean) => void;
@@ -35,7 +35,7 @@ export const useDataStore = create<ProposalState>((set) => ({
   contentRef: undefined,
 
   setIsDrawerOpen: (isOpen) => set({ isDrawerOpen: isOpen }),
-  setAgreementCountry: (country: string, value: boolean) =>
+  setAgreementCountry: (country: 'AU' | 'US', value: boolean) =>
     set((state) => ({
       data: {
         ...state.data,
