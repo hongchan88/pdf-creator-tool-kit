@@ -169,7 +169,7 @@ const ServiceContract: React.FC = () => {
                       START DATE
                     </td>
                     <td className='py-2'>
-                      {startDate || '[Insert Start Date]'}
+                      {startDate ? new Date(`${startDate}T12:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '[Insert Start Date]'}
                     </td>
                   </tr>
                   <tr>

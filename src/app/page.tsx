@@ -1,128 +1,32 @@
-'use client';
-import { FlipWords } from '@/components/ui/flip-words';
-import Head from 'next/head';
-//test
+import Link from 'next/link';
+
+const steps = [
+  ['Choose your agreement', 'Start with the creative services contract and select Australia or United States.'],
+  ['Add your details', 'Enter the service provider, business name and start date. Your preview updates as you type.'],
+  ['Review the document', 'Check all five pages. You can optionally save a draft on your device and return later.'],
+  ['Print or save as PDF', 'Open your browser print dialog and select Save as PDF to export your document.'],
+];
+
 export default function Home() {
-  const features = [
-    {
-      title: '1. Upload Your PDF',
-      description:
-        'Easily upload your existing PDF to get started. Whether it’s a proposal, report, or contract, Craftify supports all your business document needs.',
-      color: 'bg-purple-800',
-    },
-    {
-      title: '2. Provide Customization Details',
-      description:
-        "Give us all the details of the text you’d like to customize, such as company names, length of contract period, logos, certifications, or other specific elements. We'll build your tailored PDF on our platform, and it will be ready for you on your account in a few days.",
-      color: 'bg-green-800',
-    },
-
-    {
-      title: '3. Tailor for Your Clients',
-      description:
-        'Once your document is set up, Craftify enables you to quickly personalize each PDF for individual clients. Let your sales team take over, effortlessly creating customized documents on demand.',
-      color: 'bg-orange-800',
-    },
-    {
-      title: '4. Export & Use Instantly',
-      description:
-        'Once the customization is complete, instantly export your tailored PDF. Save time and boost efficiency by generating professional documents in seconds.',
-      color: 'bg-red-800',
-    },
-  ];
-
-  // const testimonials = [
-  //   {
-  //     name: 'Tina',
-  //     title: 'Masters in Teaching',
-  //     content:
-  //       'Craftify has completely transformed how our sales team operates. We used to spend hours manually customizing PDFs for each client. Now, with Craftify, the process is seamless and efficient. Uploading, customizing, and exporting documents is a breeze, and the platform is incredibly user-friendly. Our team can now focus more on building relationships with clients rather than getting bogged down with admin tasks. It’s a game-changer for our workflow!',
-  //     avatar: '/path/to/tina-avatar.png',
-  //   },
-  //   {
-  //     name: 'Kevin',
-  //     title: 'Bachelor in Physiotherapy',
-  //     content:
-  //       'As a small business owner, I struggled to create professional-looking proposals that could be tailored for different clients. Craftify made it so easy! I uploaded my existing PDFs, provided the customization details, and within days, I had a ready-to-use system. Now, I can generate personalized, high-quality documents in seconds. It’s saved me so much time and helped me leave a great impression with my clients!',
-  //     avatar: '/path/to/kevin-avatar.png',
-  //   },
-  // ];
-  const words = [
-    'Easy Customization',
-    'Empower Your Sales Team',
-    'Easy Customization',
-  ];
-
   return (
-    <>
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
-      <div className=' bg-transparent text-white min-h-screen'>
-        <main>
-          <section className='text-center py-12 sm:py-20'>
-            <h1 className='text-4xl sm:text-6xl font-bold mb-4'>
-              <FlipWords words={words} /> <br />
-            </h1>
-            <p className='text-lg sm:text-xl mb-8'>
-              Take control of your PDF creation process—upload, customize, and
-              export with ease.
-              <br className='hidden sm:inline' />
-              Let your team focus on what they do best, while you handle the
-              customization seamlessly.
-            </p>
-            <div className='container mx-auto px-4 mt-32 '>
-              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4'>
-                {features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className={`${feature.color} rounded-lg flex flex-col gap-20 p-5`}
-                  >
-                    <h3 className='font-bold text-3xl  h-16'>
-                      {feature.title}
-                    </h3>
-                    <p className='text-base'>{feature.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* <section className='py-12 sm:py-20'>
-          <h2 className='text-3xl sm:text-4xl font-bold mb-8 text-center'>
-            Testimonies
-          </h2>
-          <div className='container mx-auto px-4'>
-            <div className='grid gap-8 sm:grid-cols-2'>
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className='bg-gray-800 p-6 rounded-lg'>
-                  <div className='flex items-center mb-4'>
-                    <Image
-                      src={testimonial.avatar}
-                      alt={`${testimonial.name}'s avatar`}
-                      width={64}
-                      height={64}
-                      className='rounded-full mr-4'
-                    />
-                    <div>
-                      <h3 className='font-bold'>{testimonial.name}</h3>
-                      <p className='text-sm text-gray-400'>
-                        {testimonial.title}
-                      </p>
-                    </div>
-                  </div>
-                  <p className='text-sm'>{testimonial.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-        </main>
-
-        <footer className='text-center py-4 text-sm text-gray-500'>
-          Made with ❤️ by Hong
-        </footer>
-      </div>
-    </>
+    <div className='min-h-screen bg-slate-900 text-white'>
+      <section className='mx-auto max-w-6xl px-6 py-16 sm:py-24'>
+        <p className='mb-4 text-blue-300 font-medium'>A simpler document workflow</p>
+        <h1 className='max-w-3xl text-4xl sm:text-6xl font-bold leading-tight'>Your next contract, ready to personalize.</h1>
+        <p className='max-w-2xl text-lg text-slate-300 mt-6'>Fill in your details, review a live preview and save a creative services contract as PDF. Try the editor without creating an account.</p>
+        <Link href='/serviceContract' className='inline-block mt-8 rounded-lg bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4'>Create a contract</Link>
+        <p className='mt-4 text-sm text-slate-400'>One editable template · Five-page preview · Browser PDF export</p>
+        <ol className='mt-16 grid gap-6 sm:grid-cols-2'>
+          {steps.map(([title, description], index) => (
+            <li key={title} className='rounded-xl border border-slate-700 bg-slate-800 p-6'>
+              <h2 className='text-xl font-semibold'>{index + 1}. {title}</h2>
+              <p className='mt-3 text-slate-300'>{description}</p>
+            </li>
+          ))}
+        </ol>
+        <p className='mt-8 max-w-2xl text-sm text-slate-400'>Document details stay in memory unless you enable draft saving on this device. Review the template and adapt it to your requirements before use.</p>
+      </section>
+      <footer className='px-6 py-6 text-center text-sm text-slate-400'>Craftify · Made by Hong</footer>
+    </div>
   );
 }
