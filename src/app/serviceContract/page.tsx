@@ -133,7 +133,11 @@ const ServiceContract: React.FC = () => {
             className={`p-16 h-a4 w-a4 page bg-white flex flex-col justify-between ${styles.page}`}
           >
             <div>
-              <table className='w-full border-collapse'>
+              <table className='w-full table-fixed border-collapse'>
+                <colgroup>
+                  <col style={{ width: '24%' }} />
+                  <col style={{ width: '76%' }} />
+                </colgroup>
                 <thead>
                   <tr>
                     <th className='text-left font-bold py-2 border-b'>ITEM</th>
